@@ -1,12 +1,12 @@
 # This file initializes your application and brings together all of the various components.
-from flask import Flask
+from flask import Flask, render_template
 
-app = Flask('Py3fus - simple url shortener')
+app = Flask(__name__, template_folder='./templates', static_folder='./static')
 
 @app.route('/')
 def hello_world():
     # load template to create new short url
-    return 'Py3fus - simple url shortener by FelixS'
+    return render_template('index.html', title = 'Welcome', content = 'Welcome to Py3fus!')
 
 @app.route('/s/<short_handel>')
 def short_url_handel(short_handel):
@@ -15,6 +15,7 @@ def short_url_handel(short_handel):
     # if short_handel in db:
     # create template with redirect
     # else abort(404)
+    return render_template('short_url_handel.html', title='Redirecting', short_handel=short_handel)
     return f'Got short route {short_handel}'
 
 @app.errorhandler(404)
