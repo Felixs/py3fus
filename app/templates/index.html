@@ -6,6 +6,11 @@
 
 {% block content %}
   <p>
-      {{ content }}
+      This is a simple, easy to use url shortener.
   </p>
+  <form >
+    <label for="long_url">URL to short:</label>
+    <input type="text" name="long_url" id="long_url">
+    <input type="submit" value="Create short URL">
+  </form>
 {% endblock %}
