@@ -1,1 +1,1 @@
-This is where you’ll put the Jinja2 templates for your app.
+This is the package that contains your application.
