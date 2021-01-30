@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Short URL is unknown{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <p>
+      Short url: {{ short_url }}<br>
+  </p>
+{% endblock %}

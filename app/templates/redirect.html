@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Redirecting to page{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <p>
+      Short url: {{ short_url }}<br>
+      Long url: {{ long_url }} <br>
+      Redirecting in 5 Seconds...
+  </p>
+{% endblock %}
