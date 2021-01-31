@@ -2,7 +2,7 @@
 import os
 from flask import Flask, render_template, g, request,redirect, url_for
 from app.db import get_all_url_info, get_url_info
-from . import name_gernerator
+from . import name_generator
 from . import db
 import validators
 
@@ -46,7 +46,7 @@ def create_app(test_config=None):
         if validators.url(long_url) != True:
             return render_template('not-created.html', long_url=long_url, message='Input given is not an URL!')
 
-        short_url = name_gernerator.generate_short_url_name()
+        short_url = name_generator.generate_short_url_name()
         db.create_short_url(short_url, long_url)
         return render_template('created.html', short_url=short_url)
 
