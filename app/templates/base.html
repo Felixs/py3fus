@@ -1,19 +1,31 @@
-<!doctype html>
-<title>{% block title %}Py3fus{% endblock %}</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-<nav>
-  <h1>Py3fus</h1>
-  <ul>
-      <li><a href="https://www.google.de" target="_blank">Google</a>
-      <li><a href="https://bing.de" target="_blank">Bing</a>
-  </ul>
-</nav>
-<section class="content">
-  <header>
-    {% block header %}{% endblock %}
-  </header>
-  {% for message in get_flashed_messages() %}
-    <div class="flash">{{ message }}</div>
-  {% endfor %}
-  {% block content %}{% endblock %}
-</section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  {% block meta %}{% endblock %}
+  <title>{% block title %}Py3fus{% endblock %}</title>
+</head>
+<body>
+  <nav>
+    <ul>
+        <li><a href="{{ url_for('index') }}">Py3fus - Main</a>
+        <li><a href="{{ url_for('admin') }}">Py3fus - Admin</a>
+        <li><a href="{{ url_for('short_url', short_url='about') }}">Py3fus - About</a>
+    </ul>
+  </nav>
+  <section class="content">
+    <header>
+      {% block header %}{% endblock %}
+    </header>
+    {% for message in get_flashed_messages() %}
+      <div class="flash">{{ message }}</div>
+    {% endfor %}
+    {% block content %}{% endblock %}
+  </section>
+  <footer>
+    Created 2021 by <a href="https://github.com/Felixs" targer="_blank">FelixS</a>
+  </footer>
+</body>
+</html>
