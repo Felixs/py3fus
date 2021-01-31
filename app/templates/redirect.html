@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block meta %}
+  <meta http-equiv = "refresh" content = "2; url = {{ long_url }} " />
+{% endblock %}
+
 {% block header %}
   <h1>{% block title %}Redirecting to page{% endblock %}</h1>
 {% endblock %}
@@ -8,6 +12,6 @@
   <p>
       Short url: {{ short_url }}<br>
       Long url: {{ long_url }} <br>
-      Redirecting in 5 Seconds...
+      Redirecting in 2 Seconds...
   </p>
 {% endblock %}
