@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Py3fus - Admin{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <p>
+    url-list: <br>
+    <ul>
+        {% for url in url_list %}
+            <li>{{ url[0] }} == {{ url[1] }} HITS: {{ url[2] }} VALID_UNTIL: {{ url[3] }} ACTIVE: {{ url[4] }}</li>
+        {% endfor %}
+        
+    </ul>
+  </p>
+{% endblock %}
