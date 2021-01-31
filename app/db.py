@@ -39,7 +39,12 @@ def init_db_command():
 def get_all_url_info():
     return get_db().execute(
             'SELECT * FROM urls',
-        ).fetchone()
+        ).fetchall()
 
 def get_url_info(short_url):
-    return get_db().execute('SELECT * FROM urls WHERE short = ?', (short_url, )).fetchone()
+    return get_db().execute('SELECT * FROM urls WHERE short = ? AND active = 1', (short_url, )).fetchone()
+
+def create_short_url(short_url, long_url, valid_until=0):
+    db = get_db()
+    db.execute('INSERT INTO "main"."urls" ("short", "long", "valid_until") VALUES (?, ?, ?)', (short_url, long_url, valid_until))
+    db.commit()
