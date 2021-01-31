@@ -3,4 +3,4 @@
 I am using this project to get familiar to Flask as API/Website Application. Feel free to use it as you like (and as is).
 
 Entrypoint:
-`./app/run.sh`
+`./run.sh`
