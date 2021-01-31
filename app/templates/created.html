@@ -6,6 +6,6 @@
 
 {% block content %}
   <p>
-    The short url: {{ short_url }} has been created! <br>
+    The short url: <a href="{{ url_for('short_url', short_url=short_url) }}">{{ url_for('short_url', short_url=short_url) }}</a> has been created! <br>
   </p>
 {% endblock %}
