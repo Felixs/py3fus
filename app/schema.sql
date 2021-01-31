@@ -1,21 +1,13 @@
-DROP TABLE IF EXISTS urls;
-DROP TABLE IF EXISTS hits;
 
-CREATE TABLE "urls" (
-	"id"	INTEGER NOT NULL,
+CREATE TABLE IF NOT EXISTS "urls" (
 	"short"	TEXT NOT NULL UNIQUE,
 	"long"	TEXT NOT NULL,
-	PRIMARY KEY("id" AUTOINCREMENT)
+	"hits"	INTEGER NOT NULL DEFAULT 0,
+	"valid_until"	INTEGER NOT NULL DEFAULT 0,
+	"active"	INTEGER NOT NULL DEFAULT 1,
+	PRIMARY KEY("short")
 );
 
-INSERT INTO "main"."urls" ("id", "short", "long") VALUES ('1', 'about', 'https://github.com/Felixs/py3fus');
+INSERT INTO "main"."urls" ("short", "long") VALUES ('about', 'https://github.com/Felixs/py3fus');
 
-CREATE TABLE "hits" (
-	"id"	INTEGER NOT NULL UNIQUE,
-	"hits"	INTEGER NOT NULL,
-	PRIMARY KEY("id"),
-	FOREIGN KEY("id") REFERENCES "urls"("id")
-);
-
-INSERT INTO "main"."hits" ("id", "hits") VALUES ('1', '0');
 
