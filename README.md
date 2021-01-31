@@ -4,3 +4,6 @@ I am using this project to get familiar to Flask as API/Website Application. Fee
 
 Entrypoint:
 `./run.sh`
+
+To create SQLite-db in insatnce folder run:
+`flask init-db`
