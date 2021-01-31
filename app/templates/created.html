@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Created a new short url{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <p>
+    The short url: {{ short_url }} has been created! <br>
+  </p>
+{% endblock %}

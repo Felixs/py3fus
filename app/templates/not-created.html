@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Short url not created!{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <p>
+    Short url for url: {{ long_url }} was NOT created!<br>
+    Errormessage: {{ message }}
+  </p>
+{% endblock %}
