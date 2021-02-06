@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Py3fus - Auth{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form action="/admin" method="POST">
+    <label for="authtoken">Auth token:</label>
+    <input type="text" name="authtoken" id="authtoken">
+    <input type="submit" value="Set Authtoken">
+  </form>
+{% endblock %}

@@ -1,12 +1,13 @@
 # This file initializes your application and brings together all of the various components.
 import os
-from flask import Flask, render_template, g, request,redirect, url_for
+from flask import Flask, render_template, g, request,redirect, url_for, session
 from app.db import get_all_url_info, get_url_info
 from . import name_generator
 from . import db
 import validators
 
 def create_app(test_config=None):
+    ''' factory fuction to create app with flask run '''
     app = Flask(__name__, instance_relative_config=True, template_folder='./templates', static_folder='./static')
     app.config.from_mapping(
         SECRET_KEY='dev',
@@ -29,10 +30,19 @@ def create_app(test_config=None):
 
     @app.route('/')
     def index():
+        ''' websites index page '''
         return render_template('index.html')
 
-    @app.route('/admin')
+    @app.route('/admin', methods=('GET', 'POST'))
     def admin():
+        ''' admin panel page'''
+        if request.method == 'POST':
+            session['authtoken'] = request.form.get('authtoken')
+
+        # TODO: make auth token dynamic at startup or save to db?
+        if 'authtoken' not in session or session['authtoken'] != 'testtoken':
+            return render_template('admin_auth.html')
+            
         url_list = db.get_all_url_info()
         return render_template('admin.html', url_list=url_list)
 
