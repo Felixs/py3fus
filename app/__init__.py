@@ -48,6 +48,7 @@ def create_app(test_config=None):
 
     @app.route('/created', methods=('GET', 'POST'))
     def create():
+        ''' displays infos about created short list'''
         print(request.method)
         if request.method != 'POST':
             return redirect(url_for('index'))
@@ -62,6 +63,7 @@ def create_app(test_config=None):
 
     @app.route('/s/<string:short_url>')
     def short_url(short_url):
+        ''' redirect page '''
         if short_url is not None and len(short_url) > 0:
             db_data = get_url_info(short_url)
             if db_data is not None:
@@ -71,6 +73,7 @@ def create_app(test_config=None):
 
     @app.errorhandler(404)
     def page_not_found(error):
+        ''' error handler page'''
         return render_template('404.html', url=request.path), 404
 
     # Init-routines
