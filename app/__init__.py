@@ -14,7 +14,8 @@ def create_app(test_config=None):
     app.config.from_mapping(
         SECRET_KEY='dev',
         DATABASE=os.path.join(app.instance_path, 'py3fus.sqlite'),
-        WORD_DICT='german_dict.txt'
+        WORD_DICT='german_dict.txt',
+        ADMIN_AUTH_TOKEN='thisisnotasecuretoken'
     )
 
     if test_config is None:
@@ -42,7 +43,7 @@ def create_app(test_config=None):
             session['authtoken'] = request.form.get('authtoken')
 
         # TODO: make auth token dynamic at startup or save to db?
-        if 'authtoken' not in session or session['authtoken'] != 'testtoken':
+        if 'authtoken' not in session or session['authtoken'] != app.config['ADMIN_AUTH_TOKEN']:
             return render_template('admin_auth.html')
 
         url_list = db.get_all_url_info()
@@ -56,7 +57,7 @@ def create_app(test_config=None):
             return redirect(url_for('index'))
 
         long_url = request.form.get('long_url')
-        if validators.url(long_url) != True:
+        if validators.url(long_url) is not True:
             return render_template('not-created.html', long_url=long_url, message='Input given is not an URL!')
 
         short_url = name_generator.generate_short_url_name()
