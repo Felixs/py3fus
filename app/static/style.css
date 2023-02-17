@@ -1,0 +1,39 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    color: black;
+    font-family: sans-serif;
+}
+
+nav {
+    width: 100vw;
+    height: 48px;
+    background-color: cornflowerblue;
+}
+
+table {
+    border-collapse: collapse;
+    border: 1px solid black;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+}
+
+td.center {
+    text-align: center;
+}
+
+th[scope="col"] {
+    background: #ccc;
+  }
+
+tr:nth-child(even) {
+    background: #eee;
+}
+
+tr:nth-child(odd) {
+    background: #ddd;
+}
+
+th, td {
+    padding: 5px;
+}
